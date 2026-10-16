@@ -5,6 +5,7 @@ import { Stepper } from '../components/Stepper';
 import { IconBack } from '../components/Icons';
 import { confirmAsk } from '../components/Confirm';
 import { loadSeed } from '../lib/seed';
+import { fixedHeight } from '../lib/viewport';
 import { exportBackup, importBackup, parseBackup } from '../lib/backup';
 import { back } from '../lib/router';
 
@@ -113,7 +114,7 @@ export function Settings() {
         </div>
       )}
       <div class="muted" style={{ textAlign: 'center', fontSize: 12, margin: '8px 0' }}>
-        Schermo {innerWidth}×{innerHeight} (fisico {screen.width}×{screen.height})
+        Schermo {innerWidth}×{innerHeight} · area fissa {fixedHeight()} · fisico {screen.width}×{screen.height}
       </div>
     </div>
   );
