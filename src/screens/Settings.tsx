@@ -112,6 +112,9 @@ export function Settings() {
           </div>
         </div>
       )}
+      <div class="muted" style={{ textAlign: 'center', fontSize: 12, margin: '8px 0' }}>
+        Schermo {innerWidth}×{innerHeight} (fisico {screen.width}×{screen.height})
+      </div>
     </div>
   );
 }

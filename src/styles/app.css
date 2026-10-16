@@ -2,6 +2,8 @@
   --bg: #f2f2f7; --card: #ffffff; --text: #111318; --muted: #6b7280; --line: #e2e4ea;
   --accent: #1fa84a; --accent-text: #ffffff; --danger: #e5383b; --chip: #e9ebf0;
   --tab-h: 58px;
+  --gap: 0px; /* correzione altezza su iPhone (vedi main.tsx) */
+  --app-h: 100dvh;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -15,13 +17,13 @@ body { font: 17px/1.35 -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-
 button, input, select, textarea { font: inherit; color: inherit; }
 input, select, textarea { font-size: 16px; /* evita lo zoom di iOS */ }
 
-.shell { min-height: 100dvh; padding: 0 0 calc(var(--tab-h) + env(safe-area-inset-bottom) + 16px); }
+.shell { min-height: var(--app-h); padding: 0 0 calc(var(--tab-h) + env(safe-area-inset-bottom) + 16px); }
 .page { padding: calc(env(safe-area-inset-top) + 12px) 16px 12px; max-width: 640px; margin: 0 auto; animation: fade .15s ease-out; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } }
 .page-head { display: flex; align-items: center; gap: 8px; margin: 8px 0 14px; }
 .page-head h1 { font-size: 28px; margin: 0; flex: 1; }
 
-.tabbar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--card);
+.tabbar { position: fixed; left: 0; right: 0; bottom: calc(-1 * var(--gap)); display: flex; background: var(--card);
   border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); z-index: 10; }
 .tabbar a { flex: 1; height: var(--tab-h); display: flex; flex-direction: column; align-items: center;
   justify-content: center; gap: 2px; font-size: 11px; color: var(--muted); text-decoration: none; }
@@ -65,7 +67,7 @@ textarea.input { padding: 10px 12px; min-height: 80px; }
 .stepper .val { min-width: 56px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
 .stepper .btn { width: 48px; padding: 0; font-size: 24px; }
 
-.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: flex-end;
+.modal-bg { position: fixed; inset: 0; bottom: calc(-1 * var(--gap)); background: rgba(0,0,0,.5); display: flex; align-items: flex-end;
   justify-content: center; z-index: 50; }
 .modal { background: var(--card); width: 100%; max-width: 640px; border-radius: 20px 20px 0 0; padding: 20px 16px
   calc(20px + env(safe-area-inset-bottom)); }
@@ -127,7 +129,7 @@ textarea.input { padding: 10px 12px; min-height: 80px; }
 .set-val { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .check { width: 52px; height: 48px; border-radius: 14px; border: 2px solid var(--line); background: transparent; font-size: 24px; color: var(--muted); }
 .check.on { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
-.rest { position: fixed; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom) + 12px); background: var(--card); border: 2px solid var(--accent);
+.rest { position: fixed; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom) + 12px - var(--gap)); background: var(--card); border: 2px solid var(--accent);
   border-radius: 20px; padding: 12px 14px 14px; text-align: center; z-index: 20; box-shadow: 0 8px 30px rgba(0,0,0,.35); max-width: 616px; margin: 0 auto; }
 .rest-time { font-size: 52px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.1; }
 .rest-bar { height: 6px; border-radius: 3px; background: var(--chip); overflow: hidden; margin-top: 6px; }
@@ -141,7 +143,7 @@ textarea.input { padding: 10px 12px; min-height: 80px; }
 /* ---- scheda al volo ---- */
 .pick-n { width: 32px; height: 32px; border-radius: 16px; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 700; flex: none; }
 .pick-n.on { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
-.quick-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; flex-direction: column; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+.quick-bar { position: fixed; left: 0; right: 0; bottom: calc(-1 * var(--gap)); z-index: 20; display: flex; flex-direction: column; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
   background: var(--card); border-top: 1px solid var(--line); max-width: 640px; margin: 0 auto; }
 
 /* ---- guida ---- */
@@ -160,7 +162,7 @@ textarea.input { padding: 10px 12px; min-height: 80px; }
 .step.done .step-check, .step.current .step-check { background: var(--accent); color: var(--accent-text); }
 
 /* ---- home essenziale ---- */
-.home-hero { min-height: calc(100dvh - var(--tab-h) - env(safe-area-inset-bottom) - 16px); border-radius: 0 0 28px 28px; }
+.home-hero { min-height: calc(var(--app-h) - var(--tab-h) - env(safe-area-inset-bottom) - 16px); border-radius: 0 0 28px 28px; }
 .home-hero .hero-title { font-size: 44px; line-height: 1.05; margin-bottom: 18px; }
 .home-cta { min-height: 88px; font-size: 26px; }
 .hero-note { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(255,255,255,.16); backdrop-filter: blur(8px);
