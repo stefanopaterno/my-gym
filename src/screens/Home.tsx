@@ -69,7 +69,7 @@ export function Home() {
           </>
         ) : (
           <>
-            <div class="hero-welcome">Benvenuto Stefano</div>
+            <div class="hero-welcome">Benvenuto <b>Stefano</b></div>
             {last && (
               <div class="muted-on-hero">
                 Ultimo: {last.planName}, {ago(last.startedAt)}{next ? ` · oggi tocca a ${next.name}` : ''}
