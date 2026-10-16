@@ -12,7 +12,7 @@ export default defineConfig({
     preact(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['apple-touch-icon-v2.png', 'icon.svg'],
+      includeAssets: ['apple-touch-icon-v3.png', 'icon.svg'],
       manifest: {
         name: 'My Gym',
         short_name: 'My Gym',
@@ -25,9 +25,9 @@ export default defineConfig({
         background_color: '#0f1115',
         theme_color: '#0f1115',
         icons: [
-          { src: 'icon-v2-192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'icon-v2-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon-v2-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icon-v3-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icon-v3-512.png', sizes: '512x512', type: 'image/png' },
+          { src: 'icon-v3-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: { globPatterns: ['**/*.{js,css,html,svg,png,jpg,ico,woff2}'] },
