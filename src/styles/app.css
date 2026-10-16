@@ -173,3 +173,7 @@ textarea.input { padding: 10px 12px; min-height: 80px; }
 
 .hero-welcome { font-size: 24px; font-weight: 300; color: #fff; margin-bottom: 2px; }
 .hero-welcome b { font-weight: 800; }
+
+/* ---- spazio sopra i filtri (chips) ---- */
+.chips { margin-top: 14px; padding-top: 2px; }
+.chips + .muted, .chips + input { margin-top: 6px; }
