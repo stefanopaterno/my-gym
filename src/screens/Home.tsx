@@ -69,10 +69,12 @@ export function Home() {
           </>
         ) : (
           <>
-            <div class="muted-on-hero">
-              {last ? `Ultimo: ${last.planName}, ${ago(last.startedAt)}` : 'Benvenuto'}
-              {next && last ? ` · oggi tocca a ${next.name}` : ''}
-            </div>
+            <div class="hero-welcome">Benvenuto Stefano</div>
+            {last && (
+              <div class="muted-on-hero">
+                Ultimo: {last.planName}, {ago(last.startedAt)}{next ? ` · oggi tocca a ${next.name}` : ''}
+              </div>
+            )}
             <div class="hero-title">Vuoi allenarti?</div>
             <button class="btn primary big home-cta" onClick={() => go('allena')}>Sì, andiamo</button>
           </>
