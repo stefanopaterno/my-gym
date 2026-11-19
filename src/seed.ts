@@ -27,6 +27,16 @@ export const SEED_EXERCISES: SeedExercise[] = [
   ex('alzate-laterali', 'Alzate laterali', 'Manubri', 'Spalle', 3, 10, 8),
   ex('croci-posteriori', 'Croci posteriori', 'Manubri', 'Spalle', 3, 10, 6, 'Superserie con le alzate frontali'),
   ex('alzate-frontali', 'Alzate frontali', 'Manubri', 'Spalle', 3, 10, 6, 'Superserie con le croci posteriori'),
+  // Glutei
+  ex('calcio-indietro', 'Calcio indietro (gambe alternate)', 'Macchina', 'Glutei', 3, 10, 20),
+  ex('ponte', 'Ponte', 'Macchina', 'Glutei', 3, 10, 20),
+  ex('apertura-gambe', 'Apertura gambe (accovacciato, apri e chiudi)', 'Macchina', 'Glutei', 3, 10, 20, '20 kg per lato, posizione giù'),
+  ex('sumo-squat', 'Sumo squat', 'Manubrio', 'Glutei', 3, 10, 10),
+  // Gambe
+  ex('leg-curl', 'Leg curl', 'Macchina', 'Gambe', 3, 10, 35),
+  ex('polpacci', 'Polpacci', 'Macchina', 'Gambe', 3, 10, 40),
+  ex('leg-extension', 'Leg extension', 'Macchina', 'Gambe', 3, 10, 30),
+  ex('pressa', 'Pressa', 'Macchina', 'Gambe', 3, 10, 50),
   // Braccia (opzionali, se avanza tempo)
   ex('bicipiti', 'Curl bicipiti', 'Manubri', 'Bicipiti', 3, 10, 10),
   ex('tricipiti', 'Tricipiti', 'Cavo/Manubri', 'Tricipiti', 3, 10, 15),
@@ -45,11 +55,12 @@ export const SEED_PLANS: Plan[] = [
   { id: 'plan-petto', order: 1, name: 'Petto', items: items('croci-alto', 'croci-centro', 'croci-basso', 'tricipiti', 'bicipiti', ...FINALE) },
   { id: 'plan-dorsali', order: 2, name: 'Dorsali', items: items('dorsali-larga', 'dorsali-media', 'dorsali-stretta', 'tricipiti', 'bicipiti', ...FINALE) },
   { id: 'plan-spalle', order: 3, name: 'Spalle', items: items('lento-avanti', 'alzate-laterali', 'croci-posteriori+', 'alzate-frontali', 'bicipiti', 'tricipiti', ...FINALE) },
-  // Gambe e glutei: da aggiungere quando mi descrivi gli esercizi.
+  { id: 'plan-glutei', order: 4, name: 'Glutei', items: items('calcio-indietro', 'ponte', 'apertura-gambe', 'sumo-squat', ...FINALE) },
+  { id: 'plan-gambe', order: 5, name: 'Gambe', items: items('leg-curl', 'polpacci', 'leg-extension', 'pressa', ...FINALE) },
 ];
 
 /** Incrementa quando cambi il seed: all'avvio le schede di seed vengono riapplicate. */
-export const SEED_REV = 2;
+export const SEED_REV = 3;
 
 /** Recupero tra le serie preferito (secondi). */
 export const SEED_REST_SECONDS = 120;
