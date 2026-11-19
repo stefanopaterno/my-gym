@@ -43,10 +43,22 @@ export async function loadSeed() {
   return added;
 }
 
+/** Scarica solo le foto di seed che mancano (es. app aperta prima che le foto fossero online). */
+async function fillMissingPhotos() {
+  const db = await getDB();
+  for (const e of SEED_EXERCISES) {
+    const cur = await db.get('exercises', e.id);
+    if (!cur || cur.image) continue;
+    const photo = await fetchPhoto(e.id);
+    if (photo) await db.put('exercises', { ...cur, image: photo });
+  }
+}
+
 /** All'avvio: se il seed è stato rivisto (foto, superserie…), riapplica le schede di seed. */
 export async function migrateSeed() {
   const s = await getSettings();
-  if (!s.onboardingDone || (s.seedMigrated ?? 0) >= SEED_REV) return;
+  if (!s.onboardingDone) return;
+  if ((s.seedMigrated ?? 0) >= SEED_REV) return fillMissingPhotos();
   const db = await getDB();
   for (const p of SEED_PLANS) await db.put('plans', p);
   await loadSeed();
